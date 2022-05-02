@@ -1,60 +1,45 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { student } = require('../../models');
 
-router.post('/', async (req, res) => {
+// GET all students
+router.get('/', async (req, res) => {
   try {
-    const userData = await User.create(req.body);
-
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
-
-      res.status(200).json(userData);
-    });
+    const studentData = await Student.findAll();
+    res.status(200).json(studentData);
   } catch (err) {
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
 });
 
-router.post('/login', async (req, res) => {
+// GET a single student
+router.get('/:id', async (req, res) => {
   try {
-    const userData = await User.findOne({ where: { email: req.body.email } });
-
-    if (!userData) {
-      res
-        .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
-      return;
-    }
-
-    const validPassword = await userData.checkPassword(req.body.password);
-
-    if (!validPassword) {
-      res
-        .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
-      return;
-    }
-
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
-      
-      res.json({ user: userData, message: 'You are now logged in!' });
+    const studentData = await Student.findByPk(req.params.id, {
+      // JOIN with teachers, using the  through table
+      include: [{ model: teacher, through: teacher-input, as: 'student_teacher' }]
     });
 
+    if (!studentData) {
+      res.status(404).json({ message: 'No student found with this id!' });
+      return;
+    }
+
+    res.status(200).json(studentData);
   } catch (err) {
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
 });
 
-router.post('/logout', (req, res) => {
-  if (req.session.logged_in) {
-    req.session.destroy(() => {
-      res.status(204).end();
+router.post('/', withAuth, async (req, res) => {
+  try {
+    const newStudent = await Student.create({
+      ...req.body,
+      user_id: req.session.teacher_id,
     });
-  } else {
-    res.status(404).end();
+
+    res.status(200).json(newStudent);
+  } catch (err) {
+    res.status(400).json(err);
   }
 });
 

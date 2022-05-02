@@ -8,5 +8,4 @@ router.use('/teacher', teacherRoutes);
 router.use('/student', studentRoutes);
 router.use('/teacherInput', teacherInputRoutes);
 
-
 module.exports = router;
