@@ -1,38 +1,68 @@
 const router = require('express').Router();
-const { Project } = require('../../models');
-const withAuth = require('../../utils/auth');
+const { Teacher, Student, TeacherInput } = require('../../models'); // enter in the model names
 
-router.post('/', withAuth, async (req, res) => {
+// The `/api/teacher` endpoint // GET REQUEST -> find all tags // including its associated student data
+router.get('/', async (req, res) => {
   try {
-    const newProject = await Project.create({
-      ...req.body,
-      user_id: req.session.user_id,
+    const teacherData = await Teacher.findAll({
+      include: [
+        {
+          model: Student, // associated with the student data
+        },
+        {
+          model: TeacherInput, // associated with the teacher input data // probably need to change this??
+        }
+      ],
+    });
+    res.status(200).json(teacherData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// The '/api/teacher/id' endpoint // GET REQUEST -> find a single teacher by its `id // including its associated student data
+router.get('/:id', async (req, res) => {
+  try {
+    // .findByPk - find by primary key
+    const teacherData = await Teacher.findByPk(req.params.id, {
+      include: [
+        {
+          model: Student, // associated with the student data
+        },
+        {
+          model: TeacherInput, // associated with the teacher input data
+        }
+      ],
     });
 
-    res.status(200).json(newProject);
+    if (!teacherData) {
+      res.status(400).json({ message: 'Error! There is no teacher related to this id. Try again!' });
+      return;
+    }
+
+    res.status(200).json(teacherData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// create a new teacher // activity 14 as a reference
+router.post('/', async (req, res) => {
+  try {
+    // these are the areas that need to filled out to create a new teacher
+    const teacherData = await Teacher.create({
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      email: req.body.email,
+      password: req.body.password,
+      teacher_confirm: req.body.teacher_confirm, //boolean 
+    });
+    res.status(200).json(teacherData);
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
-router.delete('/:id', withAuth, async (req, res) => {
-  try {
-    const projectData = await Project.destroy({
-      where: {
-        id: req.params.id,
-        user_id: req.session.user_id,
-      },
-    });
-
-    if (!projectData) {
-      res.status(404).json({ message: 'No project found with this id!' });
-      return;
-    }
-
-    res.status(200).json(projectData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+// if we have time we can put in a delete or put(update)
 
 module.exports = router;
