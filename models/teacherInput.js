@@ -2,13 +2,13 @@ const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
-class Teacher extends Model {
+class User extends Model {
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
 }
 
-Teacher.init(
+User.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -16,12 +16,8 @@ Teacher.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    first_name: {
-      type: DataTypes.STRING.VARCHAR(30),
-      allowNull: false,
-    },
-    last_name: {
-      type: DataTypes.STRING.VARCHAR(30),
+    name: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
     email: {
@@ -39,27 +35,24 @@ Teacher.init(
         len: [8],
       },
     },
-    teacher_confirm: {
-      type: DataTypes.BOOLEAN,
-    },
   },
   {
     hooks: {
-      beforeCreate: async (newTeacherData) => {
-        newTeacherData.password = await bcrypt.hash(newTeacherData.password, 10);
-        return newTeacherData;
+      beforeCreate: async (newUserData) => {
+        newUserData.password = await bcrypt.hash(newUserData.password, 10);
+        return newUserData;
       },
-      beforeUpdate: async (updatedTeacherData) => {
-        updatedTeacherData.password = await bcrypt.hash(updatedTeacherData.password, 10);
-        return updatedTeacherData;
+      beforeUpdate: async (updatedUserData) => {
+        updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+        return updatedUserData;
       },
     },
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'teacher',
+    modelName: 'user',
   }
 );
 
-module.exports = Teacher;
+module.exports = User;
