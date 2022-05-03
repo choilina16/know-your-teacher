@@ -1,13 +1,15 @@
 const Teacher = require('./teacher');
 const Student = require('./student');
+const User = require('./User');
 
-User.hasMany(Teacher, {
-  foreignKey: 'user_id',
-  onDelete: 'CASCADE'
+Teacher.hasMany(Student, {
+  foreignKey: 'teacher_id',
+  onDelete: 'CASCADE',
 });
 
-Teacher.belongsTo(Student, {
-  foreignKey: 'user_id'
+Teacher.hasOne(User, {
+  foreignKey: 'teacher_id',
+  onDelete: 'CASCADE',
 });
 
-module.exports = { Teacher, Student };
+module.exports = { Teacher, Student, User };
