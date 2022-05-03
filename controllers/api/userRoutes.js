@@ -1,30 +1,30 @@
 const router = require('express').Router();
-const { Student } = require('../../models');
+const { User } = require('../../models');
 
-// GET all students
+// GET all user
 router.get('/', async (req, res) => {
   try {
-    const studentData = await Student.findAll();
-    res.status(200).json(studentData);
+    const userData = await User.findAll();
+    res.status(200).json(userData);
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-// GET a single student
+// GET a single user
 router.get('/:id', async (req, res) => {
   try {
-    const studentData = await Student.findByPk(req.params.id, {
+    const userData = await User.findByPk(req.params.id, {
       // JOIN with teachers, using the  through table
-      include: [{ model: teacher, through: teacher-input, as: 'student_teacher' }]
+      include: [{ model: teacher, through: user, as: 'user_teacher' }]
     });
 
-    if (!studentData) {
-      res.status(404).json({ message: 'No student found with this id!' });
+    if (!userData) {
+      res.status(404).json({ message: 'No user found with this id!' });
       return;
     }
 
-    res.status(200).json(studentData);
+    res.status(200).json(userData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -32,14 +32,17 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', withAuth, async (req, res) => {
   try {
-    const newStudent = await Student.create({
+    const newUser = await User.create({
       first_name: req.body.first_name,
       last_name: req.body.last_name,
       teacher_id: req.body.teacher_id,
+    	email: req.body.email,
+      password: req.body.password,
+      teacher_confirm: req.body.teacher_confirm,
       
     });
 
-    res.status(200).json(newStudent);
+    res.status(200).json(newUser);
   } catch (err) {
     res.status(400).json(err);
   }

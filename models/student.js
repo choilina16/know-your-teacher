@@ -11,11 +11,11 @@ Student.init({
     autoIncrement: true,
   },
   first_name: {
-    type: DataTypes.STRING,
+    type: DataTypes.STRING.VARCHAR(30),
     allowNull: false,
   },
   last_name: {
-    type: DataTypes.STRING,
+    type: DataTypes.STRING.VARCHAR(30),
     allowNull: false,
   },
   teacher_id: {
@@ -36,17 +36,8 @@ Student.init({
         len: [8],
       },
     },
-    date_created: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
-    },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: "user",
-        key: "id",
-      },
+    teacher_confirm: {
+      type: DataTypes.BOOLEAN,
     },
   },
   hooks: {
