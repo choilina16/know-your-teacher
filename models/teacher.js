@@ -8,6 +8,7 @@ class Teacher extends Model {
   //   }
 }
 
+
 Teacher.init(
   {
     id: {
