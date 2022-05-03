@@ -16,11 +16,11 @@ Teacher.init({
     autoIncrement: true,
   },
   first_name: {
-    type: DataTypes.STRING.VARCHAR(30),
+    type: DataTypes.STRING(30),
     allowNull: false,
   },
   last_name: {
-    type: DataTypes.STRING.VARCHAR(30),
+    type: DataTypes.STRING(30),
     allowNull: false,
   },
   color: {
