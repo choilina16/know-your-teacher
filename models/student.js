@@ -19,45 +19,15 @@ Student.init({
     allowNull: false,
   },
   teacher_id: {
-    type: DataTypes.STRING,
+    type: DataTypes.STRING.VARCHAR(30),
     allowNull: false,
   },
-  parent_email: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true,
-    validate: {
-      isEmail: true,
-    },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [8],
-      },
-    },
-    teacher_confirm: {
-      type: DataTypes.BOOLEAN,
-    },
-  },
-  hooks: {
-    async beforeCreate(newStudentData) {
-      newStudentData.password = await bcrypt.hash(newStudentData.password, 8);
-      return newStudentData;
-    },
-    beforeUpdate: async (updatedStudentData) => {
-      updatedStudentData.password = await bcrypt.hash(
-        updatedStudentData.password,
-        8
-      );
-      return updatedStudentData;
-    },
-  },
+
   sequelize,
   timestamps: false,
   freezeTableName: true,
   underscored: true,
-  modelName: "project",
+  modelName: "student",
 });
 
-module.exports = Project;
+module.exports = Student;
