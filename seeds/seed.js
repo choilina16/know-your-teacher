@@ -1,11 +1,14 @@
 const sequelize = require('../config/connection');
-const { student, teacher } = require('../models');
+const { Student, Teacher, User } = require('../models');
 
-const studentData = require('./studentData.json');
-const teacherData = require('./teacherData.json');
+// connecting to the .json files 
+const seedStudent = require('./studentData.json');
+const seedTeacher = require('./teacherData.json');
+const seedUser = require('./userData.json');
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
+  console.log('\n----- DATABASE SYNCED -----\n');
 
   const users = await User.bulkCreate(userData, {
     individualHooks: true,

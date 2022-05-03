@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Teacher, Student, TeacherInput } = require('../../models'); // enter in the model names
+const { Teacher, Student, User } = require('../../models'); // enter in the model names
 
 // The `/api/teacher` endpoint // GET REQUEST -> find all tags // including its associated student data
 router.get('/', async (req, res) => {
@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
           model: Student, // associated with the student data
         },
         {
-          model: TeacherInput, // associated with the teacher input data // probably need to change this??
+          model: User, // associated with the teacher input data // probably need to change this??
         }
       ],
     });
@@ -19,6 +19,16 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// router.get('/', async (req, res) => {
+//   const dishData = await Dish.findAll().catch((err) => { 
+//       res.json(err);
+//     });
+//       const dishes = dishData.map((dish) => dish.get({ plain: true }));
+//       res.render('all', { dishes });
+//     });
+
+
 
 // The '/api/teacher/id' endpoint // GET REQUEST -> find a single teacher by its `id // including its associated student data
 router.get('/:id', async (req, res) => {
@@ -30,7 +40,7 @@ router.get('/:id', async (req, res) => {
           model: Student, // associated with the student data
         },
         {
-          model: TeacherInput, // associated with the teacher input data
+          model: User, // associated with the teacher input data
         }
       ],
     });
@@ -45,6 +55,20 @@ router.get('/:id', async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// router.get('/dish/:id', async (req, res) => {
+//   try{ 
+//       const dishData = await Dish.findByPk(req.params.id);
+//       if(!dishData) {
+//           res.status(404).json({message: 'No dish with this id!'});
+//           return;
+//       }
+//       const dish = dishData.get({ plain: true });
+//       res.render('dish', dish);
+//     } catch (err) {
+//         res.status(500).json(err);
+//     };     
+// });
 
 // create a new teacher // activity 14 as a reference
 router.post('/', async (req, res) => {
