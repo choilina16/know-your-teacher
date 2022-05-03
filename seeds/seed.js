@@ -1,10 +1,10 @@
 const sequelize = require('../config/connection');
-const { Student, Teacher, User } = require('../models');
+// const { Student, Teacher, User } = require('../models');
 
-// connecting to the .json files 
-const seedTeacher = require('./teacherData.json');
-const seedStudent = require('./studentData.json');
-const seedUser = require('./userData.json');
+// connecting to the .js files
+const seedTeacher = require('./teacherData.js');
+const seedStudent = require('./studentData.js');
+const seedUser = require('./userData.js');
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -18,7 +18,7 @@ const seedDatabase = async () => {
 
   await seedUser();
   console.log('\n----- USERS SEEDED -----\n');
-  
+
   process.exit(0);
 };
 
