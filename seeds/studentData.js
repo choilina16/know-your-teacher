@@ -23,6 +23,6 @@ const studentData = [
   },
 ];
 
-const seedStudent = () => Student.bulkCreate(studentdata);
+const seedStudent = () => Student.bulkCreate(studentData);
 
 module.exports = seedStudent;
