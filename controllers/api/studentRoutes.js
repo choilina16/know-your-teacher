@@ -16,7 +16,9 @@ router.get('/:id', async (req, res) => {
   try {
     const studentData = await Student.findByPk(req.params.id, {
       // JOIN with teachers, using the  through table
-      include: [{ model: teacher, through: teacher-input, as: 'student_teacher' }]
+      include: [
+        { model: teacher, through: teacher - input, as: 'student_teacher' },
+      ],
     });
 
     if (!studentData) {
@@ -30,13 +32,12 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post('/', withAuth, async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const newStudent = await Student.create({
       first_name: req.body.first_name,
       last_name: req.body.last_name,
       teacher_id: req.body.teacher_id,
-      
     });
 
     res.status(200).json(newStudent);
