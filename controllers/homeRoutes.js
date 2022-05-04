@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Teacher, User } = require('../models');
 // const withAuth = require('../../utils/auth');
 
-// The `/api/teacher` endpoint // GET REQUEST -> find all teachers // including its associated student data
+// The `/` endpoint // GET REQUEST -> find all teachers // including its associated student data
 router.get('/', async (req, res) => {
   try {
     const teacherData = await Teacher.findAll({
@@ -14,18 +14,8 @@ router.get('/', async (req, res) => {
       ],
     });
 
-    // // Serialize data so the template can read it
-    // const serializedTeacher = teacherData.map((teacher) =>
-    //   teacher.get({ plain: true })
-    // );
-    // console.log(serializedTeacher);
-
-    // Pass serialized data and session flag into template
-    // res.render('homepage', { serializedTeacher });
-
-    // res.status(200).json(teacherData);
-    // console.log(teacherData);
-    res.render('homepage', {
+    // rendering the homepage (main.handlebars)
+    res.render('home', {
       teacherData,
       loggedIn: req.session.loggedIn,
     });
@@ -34,7 +24,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// The '/api/teacher/id' endpoint // GET REQUEST -> find a single teacher by its `id // including its associated student data
+// The '/id' endpoint // GET REQUEST -> find a single teacher by its `id
 router.get('/:id', async (req, res) => {
   try {
     // .findByPk - find by primary key
@@ -53,14 +43,8 @@ router.get('/:id', async (req, res) => {
       return;
     }
 
+    res.render('teacher', { teacherData, loggedIn: req.session.loggedIn });
     // res.status(200).json(teacherData);
-    // const teacher = teacherData.get({ plain: true });
-
-    // res.render('teacher', {
-    //   ...teacher,
-    //   logged_in: req.session.logged_in,
-    // });
-    res.status(200).json(teacherData);
   } catch (err) {
     res.status(500).json(err);
   }
