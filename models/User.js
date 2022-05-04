@@ -16,20 +16,12 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    // first_name: {
-    //   type: DataTypes.STRING(30),
-    //   references: {
-    //     model: 'teacher',
-    //     key: 'first_name',
-    //   },
-    // },
-    // last_name: {
-    //   type: DataTypes.STRING(30),
-    //   references: {
-    //     model: 'teacher',
-    //     key: 'last_name',
-    //   },
-    // },
+    first_name: {
+      type: DataTypes.STRING(30),
+    },
+    last_name: {
+      type: DataTypes.STRING(30),
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -45,15 +37,12 @@ User.init(
         len: [8],
       },
     },
-    teacher_confirm: {
-      type: DataTypes.BOOLEAN,
-    },
     teacher_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: "teacher",
-        key: "id",
+        model: 'teacher',
+        key: 'id',
       },
     },
   },
