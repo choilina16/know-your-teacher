@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Teacher, Student, User } = require("../models");
+const { Teacher, User } = require("../models");
 // const withAuth = require('../../utils/auth');
 
 // The `/api/teacher` endpoint // GET REQUEST -> find all tags // including its associated student data

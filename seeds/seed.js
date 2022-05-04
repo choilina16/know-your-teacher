@@ -3,7 +3,6 @@ const sequelize = require('../config/connection');
 
 // connecting to the .js files
 const seedTeacher = require('./teacherData.js');
-const seedStudent = require('./studentData.js');
 const seedUser = require('./userData.js');
 
 const seedDatabase = async () => {
@@ -12,9 +11,6 @@ const seedDatabase = async () => {
 
   await seedTeacher();
   console.log('\n----- TEACHERS SEEDED -----\n');
-
-  await seedStudent();
-  console.log('\n----- STUDENTS SEEDED -----\n');
 
   await seedUser();
   console.log('\n----- USERS SEEDED -----\n');
