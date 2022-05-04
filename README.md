@@ -1,3 +1,2 @@
 # know-your-teacher
-
-<!-- testing -->
+testing
