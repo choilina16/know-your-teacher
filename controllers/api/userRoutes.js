@@ -30,7 +30,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post('/', withAuth, async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const newUser = await User.create({
       first_name: req.body.first_name,
