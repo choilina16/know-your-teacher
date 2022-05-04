@@ -1,6 +1,35 @@
+/* Color Variables */
 :root {
   --khaki: #bf844f;
   --chalkboard: #334348;
   --palegrey: #e5e5e5;
+  --hoverChalkBoard: #469eb9;
   opacity: 90%;
+}
+
+/* Login Header */
+header {
+  height: 6.25rem;
+  width: 100%;
+  color: var(--palegrey);
+  background-color: var(--khaki);
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: 400;
+  background-blend-mode: 90%;
+  margin-top: -28.313rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+button {
+  display: inline-block;
+  background: var(--chalkboard);
+  color: var(--palegrey);
+  cursor: pointer;
+  margin-top: 1.563rem;
+  border-radius: 0.313rem 0.313rem 0.313rem 0.313rem;
+}
+
+button:hover {
+  background: var(--hoverChalkBoard);
 }
