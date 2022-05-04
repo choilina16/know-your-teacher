@@ -52,7 +52,7 @@ User.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'user',
+        model: 'teacher',
         key: 'id',
       },
     },
