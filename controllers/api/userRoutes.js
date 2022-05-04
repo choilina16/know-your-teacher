@@ -42,12 +42,12 @@ router.post("/", async (req, res) => {
     //   teacher_id: req.body.teacher_id,
     // }
 
-    // req.session.save(() => {
-    //   req.session.user_id = newUser.id;
-    //   req.session.logged_in = true;
+    req.session.save(() => {
+      req.session.user_id = newUser.id;
+      req.session.logged_in = true;
 
-    res.status(200).json(newUser);
-    // });
+      res.status(200).json(newUser);
+    });
   } catch (err) {
     res.status(400).json(err);
   }
