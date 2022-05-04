@@ -14,10 +14,13 @@ const PORT = process.env.PORT || 3001;
 // Set up Handlebars.js engine with custom helpers
 const hbs = exphbs.create({ helpers });
 
+// sessions activity 15
 const sess = {
   secret: 'Super secret secret',
   cookie: { maxAge: 100000 },
+  // forces the session to be saved back to the session store -> most cases this will be false
   resave: false,
+  // force a session that is new but not yet modified to be saved back to the session store -> most cases this will be true
   saveUninitialized: true,
   store: new SequelizeStore({
     db: sequelize,
