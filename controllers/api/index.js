@@ -5,6 +5,6 @@ const userRoutes = require('./userRoutes');
 
 // this is what you type in to get the results
 router.use('/teacher', teacherRoutes);
-router.use('/user', userRoutes);
+router.use('/users', userRoutes);
 
 module.exports = router;
