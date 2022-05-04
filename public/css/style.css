@@ -21,12 +21,17 @@ header {
   flex-wrap: wrap;
 }
 
-button {
-  display: inline-block;
+button #Login {
   background: var(--chalkboard);
   color: var(--palegrey);
   cursor: pointer;
-  margin-top: 1.563rem;
+  border-radius: 0.313rem 0.313rem 0.313rem 0.313rem;
+}
+
+button #SignUp {
+  background: var(--chalkboard);
+  color: var(--palegrey);
+  cursor: pointer;
   border-radius: 0.313rem 0.313rem 0.313rem 0.313rem;
 }
 
