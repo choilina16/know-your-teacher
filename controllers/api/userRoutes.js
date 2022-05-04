@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+// `/api/users` endpoint // POST REQUEST -> creating a new user!
 router.post('/', async (req, res) => {
   try {
     const newUser = await User.create(req.body);
@@ -13,12 +14,12 @@ router.post('/', async (req, res) => {
     //   teacher_id: req.body.teacher_id,
     // }
 
-    // req.session.save(() => {
-    //   req.session.user_id = newUser.id;
-    //   req.session.logged_in = true;
+    req.session.save(() => {
+      req.session.user_id = newUser.id;
+      req.session.logged_in = true;
 
-    res.status(200).json(newUser);
-    // });
+      res.status(200).json(newUser);
+    });
   } catch (err) {
     res.status(400).json(err);
   }
