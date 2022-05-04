@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Teacher, Student, User } = require('../models');
+const { Teacher, User } = require('../models');
 // const withAuth = require('../../utils/auth');
 
 // The `/api/teacher` endpoint // GET REQUEST -> find all tags // including its associated student data
@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
     // Pass serialized data and session flag into template
     // res.render('homepage', { serializedTeacher });
 
-    // res.status(200).json(teacherData);
+    res.status(200).json(teacherData);
   } catch (err) {
     res.status(500).json(err);
   }
