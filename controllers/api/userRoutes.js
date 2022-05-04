@@ -1,8 +1,8 @@
-const router = require('express').Router();
-const { User } = require('../../models');
-
+const router = require("express").Router();
+const { User } = require("../../models");
+const withAuth = require("../../utils/auth");
 // GET all user
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const userData = await User.findAll();
     res.status(200).json(userData);
@@ -12,15 +12,15 @@ router.get('/', async (req, res) => {
 });
 
 // GET a single user
-router.get('/:id', async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const userData = await User.findByPk(req.params.id, {
       // JOIN with teachers, using the  through table
-      include: [{ model: teacher, through: user, as: 'user_teacher' }],
+      include: [{ model: teacher, through: user, as: "user_teacher" }],
     });
 
     if (!userData) {
-      res.status(404).json({ message: 'No user found with this id!' });
+      res.status(404).json({ message: "No user found with this id!" });
       return;
     }
 
@@ -30,7 +30,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post('/', withAuth, async (req, res) => {
+router.post("/", withAuth, async (req, res) => {
   try {
     const newUser = await User.create({
       first_name: req.body.first_name,
