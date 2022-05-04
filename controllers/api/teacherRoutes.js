@@ -1,12 +1,14 @@
 const router = require('express').Router();
 const { Teacher, User } = require('../../models');
-// const withAuth = require('../../utils/auth');
+const withAuth = require('../../utils/auth');
 
 // create a new teacher // activity 14 as a reference
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     // these are the areas that need to filled out to create a new teacher
     const newTeacher = await Teacher.create({
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
       color: req.body.color,
       flower: req.body.flower,
       candy: req.body.candy,

@@ -1,21 +1,38 @@
-<head>
-  <meta charset="UTF-8">
-  <title>Know Your Teacher</title>
-  <link rel="stylesheet" href="/css/jass.css">
-  <link rel="stylesheet" href="/css/style.css">
-</head>
+<html lang='en'>
 
-<body>
-  <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
-      <h1>
-        &#127881 Your Teacher's Favorite Things &#127881
-      </h1>
-    </header>
-      <main class="container container-fluid mt-5">
-        {{{ body }}}
+  <head>
+    <meta charset='UTF-8' />
+    <title>Know Your Teacher</title>
+    {{! <link rel='stylesheet' href='/css/jass.css' /> }}
+    <link rel='stylesheet' href='/css/style.css' />
+  </head>
+
+  <body>
+    <div class='flex-column justify-space-around'>
+      <header class='display-flex justify-space-between align-center p-2'>
+        <h1>
+          &#127881 Your Teacher's Favorite Things &#127881
+        </h1>
+        <nav>
+          <a href='/'>Home</a>
+          {{#if logged_In}}
+            <a href='/profile'>My Profile</a>
+            <button id='logout' class='btn-no-style'>Logout</button>
+          {{else}}
+            <a href='/login'>Login</a>
+          {{/if}}
+        </nav>
+      </header>
+
+      <main class='container container-fluid mt-5'>
+        <p>Get to know your teacher!</p>
+        {{{body}}}
       </main>
-  </div>
+    </div>
+
+    {{#if logged_In}}
+      <script src='../../public/js/logout.js'></script>
+    {{/if}}
   </body>
 
 </html>
