@@ -32,7 +32,7 @@ const newFormHandler = async (event) => {
     headers: { 'Content-Type': 'application/json' },
   });
 
-  document.location.replace('/home');
+  document.location.replace('/');
 };
 
 document
