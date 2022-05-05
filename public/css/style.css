@@ -4,7 +4,6 @@
   --chalkboard: #334348;
   --palegrey: #e5e5e5;
   --hoverChalkBoard: #469eb9;
-  opacity: 90%;
 }
 body {
   margin: 0;
@@ -13,7 +12,8 @@ body {
   color: black;
   background-image: url("../images/mokykla.jpg");
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-start;
   line-height: 1.5;
 }
 
@@ -25,9 +25,8 @@ header {
   align-items: center;
   background-color: #bf844f;
   margin: 10.938rem 0rem 0rem 0rem;
-  opacity: 90%;
   width: 100%;
-  height: 6.25rem;
+  height: 6rem;
 }
 
 #loginsign {
@@ -44,8 +43,7 @@ button {
   color: var(--palegrey);
   cursor: pointer;
   border-radius: 1.75rem 1.75rem 1.75rem 1.75rem;
-
-  margin: 3.5rem 0rem 0rem 45rem;
+  display: inline-block;
 }
 
 button:hover {
@@ -54,4 +52,27 @@ button:hover {
 
 button:focus {
   border-color: var(--hoverChalkBoard);
+}
+nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+nav img {
+  height: 6rem;
+  padding: 0px 0rem 0rem 80rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+a {
+  height: 3.125rem;
+  width: 9.375rem;
+  font-size: large;
+  background: var(--chalkboard);
+  color: var(--palegrey);
+  cursor: pointer;
+  border-radius: 1.75rem 1.75rem 1.75rem 1.75rem;
+  display: inline-block;
 }

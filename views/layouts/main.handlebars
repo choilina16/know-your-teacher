@@ -7,10 +7,12 @@
 
 <body>
   
-   {{!-- <img src="images/ChalkBoardLogo.png" class="box1">
-   --}}
+  
+  
     <header>
-      
+      <nav>
+       <img src="images/ChalkBoardMini.png" class="box0">
+      </nav>
     </header>
     <div id ="loginsign">
       <div id="start">
@@ -20,12 +22,12 @@
       <button id="signup">Sign Up</button>
       </div>
         <nav>
-          <a href='/'>Home</a>
+          <button href='/'>Home</button>
           {{#if logged_In}}
             <a href='/profile'>My Profile</a>
             <button id='logout' class='btn-no-style'>Logout</button>
           {{else}}
-            <a href='/login'>Login</a>
+            <button href='/login'>Login</button>
           {{/if}}
         </nav>
       </header>
