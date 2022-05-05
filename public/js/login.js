@@ -1,31 +1,38 @@
+const userLogin = document.getElementById("login");
 const loginFormHandler = async (event) => {
   event.preventDefault();
 
-  // targeting the label for= for pw & username
-  const usernameEl = document.querySelector('#email-login');
-  const passwordEl = document.querySelector('#password-login');
+  userLogin.addEventListener("click", login);
+  function login() {
+    const clearIntro = (document.getElementById("logininsign").style.display =
+      "none");
+  }
 
-  const response = await fetch('/api/users/login', {
-    method: 'POST',
+  // targeting the label for= for pw & username
+  const usernameEl = document.querySelector("#email-login");
+  const passwordEl = document.querySelector("#password-login");
+
+  const response = await fetch("/api/users/login", {
+    method: "POST",
     body: JSON.stringify({
       username: usernameEl.value,
       password: passwordEl.value,
     }),
 
-    headers: { 'Content-Type': 'application/json' },
+    headers: { "Content-Type": "application/json" },
   });
 
   // If successful, redirect the browser to the create page
   if (response.ok) {
-    document.location.replace('/create');
+    document.location.replace("/create");
   } else {
-    alert('Failed to login!');
+    alert("Failed to login!");
   }
 };
 
 document
-  .querySelector('#login-form')
-  .addEventListener('submit', loginFormHandler);
+  .querySelector("#login-form")
+  .addEventListener("submit", loginFormHandler);
 
 // const loginFormHandler = async (event) => {
 //   event.preventDefault();
