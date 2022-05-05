@@ -30,6 +30,24 @@ router.get('/', async (req, res) => {
   }
 });
 
+// /create page for the teacher input
+router.get('/create', async (req, res) => {
+  try {
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+    });
+
+    const user = userData.get({ plain: true });
+
+    res.render('create', {
+      user,
+      // logged_In: req.session.logged_In,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 // The '/teacher/id' endpoint // GET REQUEST -> find a single teacher by its `id
 router.get('/teacher/:id', async (req, res) => {
   try {
@@ -97,7 +115,7 @@ router.get('/login', (req, res) => {
 router.get('/signup', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/');
+    res.redirect('/create');
     return;
   }
   res.render('signup');

@@ -16,7 +16,7 @@ const newFormHandler = async (event) => {
   ).value;
   const otherEl = document.querySelector('input[name="teacher-other"]').value;
 
-  await fetch('/api/teacher', {
+  await fetch('/api/teacher/', {
     method: 'POST',
     body: JSON.stringify({
       firstNameEl,
@@ -32,7 +32,7 @@ const newFormHandler = async (event) => {
     headers: { 'Content-Type': 'application/json' },
   });
 
-  document.location.replace('/');
+  document.location.replace('/home');
 };
 
 document
