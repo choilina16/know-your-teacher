@@ -4,27 +4,22 @@ const userData = [
   {
     email: 'milton.friedman@awesomedudes.com',
     password: 'Friedman',
-    teacher_id: 1,
   },
   {
     email: 'friedrich.hayek@awesomedudes.com',
-    password: 'Hayek',
-    teacher_id: 2,
+    password: 'Hayekkkk',
   },
   {
     email: 'thomas.sowell@awesomedudes.com',
-    password: 'Sowell',
-    teacher_id: 3,
+    password: 'Sowellllll',
   },
   {
-    email: 'murray.rothbard@awesomedudes.com ',
-    password: ' Rothbard',
-    teacher_id: 4,
+    email: 'murray.rothbard@awesomedudes.com',
+    password: 'Rothbard',
   },
   {
     email: 'ludwigvon.mises@awesomedudes.com',
-    password: 'Mises',
-    teacher_id: 5,
+    password: 'Misesssss',
   },
 ];
 const seedUser = () => User.bulkCreate(userData);
