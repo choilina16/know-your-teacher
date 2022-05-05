@@ -31,17 +31,21 @@ router.get('/', async (req, res) => {
 });
 
 // /create page for the teacher input
+// Use withAuth middleware to prevent access to route
 router.get('/create', async (req, res) => {
   try {
+    // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
+      // include: [{ model: Teacher }],
     });
 
     const user = userData.get({ plain: true });
 
+    // renders create.handlebars
     res.render('create', {
-      user,
-      // logged_In: req.session.logged_In,
+      ...user,
+      // logged_in: true,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -74,7 +78,7 @@ router.get('/teacher/:id', async (req, res) => {
 
     res.render('teacher', {
       ...teacher,
-      // logged_In: req.session.logged_In,
+      logged_In: req.session.logged_In,
     });
     // res.status(200).json(teacherData);
   } catch (err) {

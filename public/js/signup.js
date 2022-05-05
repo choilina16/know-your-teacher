@@ -5,21 +5,23 @@ const signupFormHandler = async (event) => {
   const emailEl = document.querySelector('#email-signup');
   const passwordEl = document.querySelector('#password-signup');
 
-  const response = await fetch('/api/users', {
-    method: 'POST',
-    body: JSON.stringify({
-      email: emailEl.value,
-      password: passwordEl.value,
-    }),
+  if (emailEl && passwordEl) {
+    const response = await fetch('/api/users', {
+      method: 'POST',
+      body: JSON.stringify({
+        email: emailEl.value,
+        password: passwordEl.value,
+      }),
 
-    headers: { 'Content-Type': 'application/json' },
-  });
+      headers: { 'Content-Type': 'application/json' },
+    });
 
-  // If successful, redirect the browser to the create page
-  if (response.ok) {
-    document.location.replace('/create');
-  } else {
-    alert('Failed to sign up!');
+    // If successful, redirect the browser to the create page
+    if (response.ok) {
+      document.location.replace('/create');
+    } else {
+      alert('Failed to sign up!');
+    }
   }
 };
 
