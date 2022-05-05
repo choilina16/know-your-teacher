@@ -4,6 +4,7 @@ const session = require("express-session");
 const exphbs = require("express-handlebars");
 const routes = require("./controllers");
 const helpers = require("./utils/helpers");
+const clc = require("cli-color");
 
 const sequelize = require("./config/connection");
 // stores session in a database. Used to instantiate store: new SequelizeStore  in const sess(below)
@@ -43,5 +44,5 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log("Now listening"));
+  app.listen(PORT, () => console.log(clc.green("Now listening")));
 });
