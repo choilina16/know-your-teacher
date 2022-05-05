@@ -34,7 +34,7 @@ header a {
   height: 6.25rem;
   background-color: var(--khaki);
   display: flex;
-  flex: 6;
+  flex: 4.5;
   order: 1;
   opacity: 90%;
 }
@@ -55,4 +55,24 @@ button:hover {
 
 button:focus {
   border-color: var(--hoverChalkBoard);
+}
+
+nav a {
+  height: 3.125rem;
+  width: 9.375rem;
+  font-size: large;
+  background: var(--chalkboard);
+  color: var(--palegrey);
+  cursor: pointer;
+  border-radius: 1.75rem 1.75rem 1.75rem 1.75rem;
+}
+
+#button {
+  height: 3.125rem;
+  width: 9.375rem;
+  font-size: large;
+  background: var(--chalkboard);
+  color: var(--palegrey);
+  cursor: pointer;
+  border-radius: 1.75rem 1.75rem 1.75rem 1.75rem;
 }
