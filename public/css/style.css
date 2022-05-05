@@ -4,52 +4,37 @@
   --chalkboard: #334348;
   --palegrey: #e5e5e5;
   --hoverChalkBoard: #469eb9;
-  opacity: 90%;
 }
 body {
   margin: 0;
   padding: 0;
   font-family: Georgia, "Times New Roman", Times, serif;
-  color: white;
+  color: black;
   background-image: url("../images/mokykla.jpg");
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   line-height: 1.5;
 }
-body header {
-  margin: 10.938rem 0rem 0rem 0rem;
-  width: 100%;
-  height: 6.25rem;
-}
-header h1 {
-  display: flex;
-}
 
-.box0 {
-  height: 6.25rem;
-  display: flex;
-  flex: 1;
-  order: 3;
-}
-.box1 {
-  height: 6.25rem;
-  background-color: var(--khaki);
-  display: flex;
-  flex: 3;
-  order: 2;
-}
-.box2 {
-  height: 6.25rem;
-  background-color: var(--khaki);
+header {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
-  align-content: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
-  flex: 1;
-  order: 1;
+  background-color: #bf844f;
+  margin: 10.938rem 0rem 0rem 0rem;
+  width: 100%;
+  height: 6rem;
 }
 
-/* button styling */
+#loginsign {
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+}
+
 button {
   height: 3.125rem;
   width: 9.375rem;
@@ -57,8 +42,8 @@ button {
   background: var(--chalkboard);
   color: var(--palegrey);
   cursor: pointer;
-  border-color: var(--chalkboard);
   border-radius: 1.75rem 1.75rem 1.75rem 1.75rem;
+  display: inline-block;
 }
 
 button:hover {
@@ -68,85 +53,26 @@ button:hover {
 button:focus {
   border-color: var(--hoverChalkBoard);
 }
+nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 
-/* home.handler button style */
-h1 a {
-  height: 4.125rem;
-  width: 9.375rem;
-  font-size: large;
-  background: var(--chalkboard);
-  color: var(--palegrey);
-  cursor: pointer;
-  border-radius: 1.75rem 1.75rem 1.75rem 1.75rem;
+nav img {
+  height: 6rem;
+  padding: 0px 0rem 0rem 80rem;
+  display: flex;
+  flex-wrap: wrap;
 }
-h2 button {
-  display: block;
-}
-/* Home, Login, Signup button design */
-a.btn.btn-primary {
+
+a {
   height: 3.125rem;
   width: 9.375rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-content: center;
   font-size: large;
   background: var(--chalkboard);
   color: var(--palegrey);
   cursor: pointer;
-  border-color: var(--chalkboard);
   border-radius: 1.75rem 1.75rem 1.75rem 1.75rem;
-}
-/* Login design */
-form#login-form.login-form {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: center;
-  align-items: center;
-}
-div.card {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: center;
-  align-items: center;
-  background-color: #bf844f;
-  width: 25rem;
-  margin: 8rem 0rem 0rem 0rem;
-}
-div.form-group {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-}
-form#signup-form.login-form {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-content: center;
-  align-items: center;
-}
-main {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-h2 {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--khaki);
-  height: 5rem;
-  border-radius: 0.625rem;
-  font-weight: 200;
-}
-
-main div {
-  display: flex;
+  display: inline-block;
 }
