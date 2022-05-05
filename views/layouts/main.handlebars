@@ -1,18 +1,24 @@
-<html lang='en'>
+<head>
+  <meta charset="UTF-8">
+  <title>Know Your Teacher</title>
+  
+  <link rel="stylesheet" href="css/style.css">
+</head>
 
-  <head>
-    <meta charset='UTF-8' />
-    <title>Know Your Teacher</title>
-    {{! <link rel='stylesheet' href='/css/jass.css' /> }}
-    <link rel='stylesheet' href='/css/style.css' />
-  </head>
-
-  <body>
-    <div class='flex-column justify-space-around'>
-      <header class='display-flex justify-space-between align-center p-2'>
-        <h1>
-          &#127881 Your Teacher's Favorite Things &#127881
-        </h1>
+<body>
+  
+   <img src="images/mokykla.jpg" class="box0">  
+  
+    <header>
+      <img src="images/ChalkBoardLogo.png" class="box1">
+    </header>
+    <div id ="loginsign">
+      <div id="start">
+      <button id="login">Login</button>
+      </div>
+      <div id="setup">
+      <button id="signup">Sign Up</button>
+      </div>
         <nav>
           <a href='/'>Home</a>
           {{#if logged_In}}
