@@ -19,7 +19,11 @@ const loginFormHandler = async (event) => {
 
     // If successful, redirect the browser to the create page
     if (response.ok) {
+<<<<<<< HEAD
       document.location.replace("/create");
+=======
+      document.location.replace("/teacher");
+>>>>>>> 62bf280ad9aa10c4d555baece9684d38d3b644fc
     } else {
       alert("Failed to login!");
     }

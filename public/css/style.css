@@ -55,6 +55,7 @@ button {
   background: var(--chalkboard);
   color: var(--palegrey);
   cursor: pointer;
+  border-color: var(--chalkboard);
   border-radius: 1.75rem 1.75rem 1.75rem 1.75rem;
 }
 
@@ -74,4 +75,7 @@ h1 a {
   color: var(--palegrey);
   cursor: pointer;
   border-radius: 1.75rem 1.75rem 1.75rem 1.75rem;
+}
+h2 button {
+  display: block;
 }
