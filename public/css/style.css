@@ -38,6 +38,15 @@ header a {
   order: 1;
   opacity: 90%;
 }
+.box2 {
+  height: 3.125rem;
+  width: 9.375rem;
+  font-size: large;
+  background: var(--chalkboard);
+  color: var(--palegrey);
+  cursor: pointer;
+  border-radius: 1.75rem 1.75rem 1.75rem 1.75rem;
+}
 
 button {
   height: 3.125rem;
@@ -57,18 +66,8 @@ button:focus {
   border-color: var(--hoverChalkBoard);
 }
 
-nav a {
-  height: 3.125rem;
-  width: 9.375rem;
-  font-size: large;
-  background: var(--chalkboard);
-  color: var(--palegrey);
-  cursor: pointer;
-  border-radius: 1.75rem 1.75rem 1.75rem 1.75rem;
-}
-
-#button {
-  height: 3.125rem;
+h1 a {
+  height: 4.125rem;
   width: 9.375rem;
   font-size: large;
   background: var(--chalkboard);

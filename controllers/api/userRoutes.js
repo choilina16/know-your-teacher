@@ -11,8 +11,7 @@ router.post('/', async (req, res) => {
     });
 
     req.session.save(() => {
-      req.session.email = newUser.email;
-      req.session.password = newUser.password;
+      req.session.user_id = newUser.id;
       req.session.loggedIn = true;
 
       res.json(newUser);
@@ -25,6 +24,7 @@ router.post('/', async (req, res) => {
 
 //login to an account -> /api/users/login
 router.post('/login', async (req, res) => {
+  // checking to see the email matches the db
   try {
     const user = await User.findOne({ where: { email: req.body.email } });
 
@@ -32,7 +32,7 @@ router.post('/login', async (req, res) => {
       res.status(400).json({ message: 'Incorrect email please try again' });
       return;
     }
-
+    // checking to see if the ps matches
     const validPassword = await user.checkPassword(req.body.password);
 
     if (!validPassword) {
@@ -41,8 +41,9 @@ router.post('/login', async (req, res) => {
     }
     // creates a sesson with the express session library
     req.session.save(() => {
-      req.session.email = user.email;
-      req.session.password = user.password;
+      // req.session.email = user.email;
+      // req.session.password = user.password;
+      req.session.user_id = user.id;
       req.session.logged_in = true;
 
       res.json({ user: user, message: 'You are now logged in!' });

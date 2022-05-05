@@ -6,7 +6,7 @@ const loginFormHandler = async (event) => {
   const emailEl = document.querySelector("#email-login");
   const passwordEl = document.querySelector("#password-login");
 
-  if (email && password) {
+  if (emailEl && passwordEl) {
     const response = await fetch("/api/users/login", {
       method: "POST",
       body: JSON.stringify({
@@ -19,7 +19,7 @@ const loginFormHandler = async (event) => {
 
     // If successful, redirect the browser to the create page
     if (response.ok) {
-      document.location.replace("/login");
+      document.location.replace("/create");
     } else {
       alert("Failed to login!");
     }
