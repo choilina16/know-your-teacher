@@ -1,34 +1,39 @@
 <head>
   <meta charset="UTF-8">
   <title>Know Your Teacher</title>
-  
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../../public/css/style.css">
 </head>
 
 <body>
   
-   <img src="images/mokykla.jpg" class="box0">  
+  <img src="images/mokykla.jpg" class="box0">  
   
-    <header>
-      <img src="images/ChalkBoardLogo.png" class="box1">
+  <header>
+    
+    <img src="images/ChalkBoardLogo.png" class="box1">
+
+    <div id="loginsign">
+
+    <div id="start">
+    <button id="login">Login</button>
+    </div>
+
+    <div id="setup">
+    <button id="signup">Sign Up</button>
+    </div>
+
+      <nav>
+        <a href='/'>Home</a>
+        {{#if logged_In}}
+          <a href='/create'>Create your favorites</a>
+          <button id='logout' class='btn-no-style'>Logout</button>
+        {{else}}
+          <a href='/login'>Login</a>
+          <a href='/signup'>Signup</a>
+        {{/if}}
+      </nav>
+
     </header>
-    <div id ="loginsign">
-      <div id="start">
-      <button id="login">Login</button>
-      </div>
-      <div id="setup">
-      <button id="signup">Sign Up</button>
-      </div>
-        <nav>
-          <a href='/'>Home</a>
-          {{#if logged_In}}
-            <a href='/profile'>My Profile</a>
-            <button id='logout' class='btn-no-style'>Logout</button>
-          {{else}}
-            <a href='/login'>Login</a>
-          {{/if}}
-        </nav>
-      </header>
 
       <main class='container container-fluid mt-5'>
         <p>Get to know your teacher!</p>
