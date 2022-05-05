@@ -2,13 +2,13 @@ const signupFormHandler = async (event) => {
   event.preventDefault();
 
   // targeting the label for= for pw & username
-  const usernameEl = document.querySelector('#email-signup');
+  const emailEl = document.querySelector('#email-signup');
   const passwordEl = document.querySelector('#password-signup');
 
-  const response = await fetch('/api/user', {
+  const response = await fetch('/api/users', {
     method: 'POST',
     body: JSON.stringify({
-      username: usernameEl.value,
+      email: emailEl.value,
       password: passwordEl.value,
     }),
 
