@@ -1,9 +1,10 @@
-const router = require('express').Router();
-const { User } = require('../../models');
+const router = require("express").Router();
+const { User } = require("../../models");
+const bcrypt = require("bcrypt");
 // const withAuth = require('../../utils/auth');
 
 // Create a user -> /api/users/
-router.post('/', async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const newUser = await User.create({
       email: req.body.email,
@@ -23,38 +24,47 @@ router.post('/', async (req, res) => {
 });
 
 //login to an account -> /api/users/login
-router.post('/login', async (req, res) => {
+router.post("/login", async (req, res) => {
   // checking to see the email matches the db
   try {
     const user = await User.findOne({ where: { email: req.body.email } });
 
     if (!user) {
-      res.status(400).json({ message: 'Incorrect email please try again' });
+      res.status(400).json({ message: "Incorrect email please try again" });
       return;
     }
     // checking to see if the ps matches
-    const validPassword = await user.checkPassword(req.body.password);
+    const validPassword = await bcrypt.compare(
+      req.body.password,
+      user.password
+    );
 
     if (!validPassword) {
-      res.status(400).json({ message: 'Incorrect password, please try again' });
+      res.status(400).json({ message: "Incorrect password, please try again" });
       return;
     }
-    // creates a sesson with the express session library
-    req.session.save(() => {
-      // req.session.email = user.email;
-      // req.session.password = user.password;
-      req.session.user_id = user.id;
-      req.session.logged_in = true;
-
-      res.json({ user: user, message: 'You are now logged in!' });
-    });
+    // if they do match, return success message
+    res.status(200).json({ message: "You are now logged in!" });
   } catch (err) {
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
+  // // creates a sesson with the express session library
+  // req.session.save(() => {
+  //   // req.session.email = user.email;
+  //   // req.session.password = user.password;
+  //   req.session.user_id = user.id;
+  //   req.session.logged_in = true;
+
+  //   res.json({ user: user, message: 'You are now logged in!' });
+  // });
+
+  //  catch (err) {
+  //   res.status(400).json(err);
+  // };
 });
 
 // ends session
-router.post('/logout', (req, res) => {
+router.post("/logout", (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
