@@ -2,6 +2,8 @@ const { Teacher } = require('../models');
 
 const teacherData = [
   {
+    first_name: 'Milton ',
+    last_name: 'Friedman',
     color: 'Blue',
     flower: 'Sunflowers',
     candy: 'Milky Way',
@@ -10,6 +12,8 @@ const teacherData = [
     other: 'I do not celebrate birthdays',
   },
   {
+    first_name: 'Friedrich',
+    last_name: 'Hayek',
     color: 'Purple',
     flower: 'Roses',
     candy: 'Jolly Rancher',
@@ -18,6 +22,8 @@ const teacherData = [
     other: 'Allergic to nuts',
   },
   {
+    first_name: 'Thomas',
+    last_name: 'Sowell',
     color: 'Red',
     flower: 'Tulip',
     candy: 'Snickers',
@@ -26,6 +32,8 @@ const teacherData = [
     other: 'Loves gift cards to target',
   },
   {
+    first_name: 'Murray',
+    last_name: 'Rothbard',
     color: 'Orange',
     flower: 'Dahlia',
     candy: 'Hersheys',
@@ -34,6 +42,8 @@ const teacherData = [
     other: 'I do not celebrate Christmas',
   },
   {
+    first_name: 'Ludwig von',
+    last_name: 'Mises',
     color: 'Yellow',
     flower: 'Orchid',
     candy: 'Kit Kat',

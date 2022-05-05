@@ -6,6 +6,7 @@ const routes = require("./controllers");
 const helpers = require("./utils/helpers");
 
 const sequelize = require("./config/connection");
+// stores session in a database. Used to instantiate store: new SequelizeStore  in const sess(below)
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 const app = express();
@@ -22,11 +23,13 @@ const sess = {
   resave: false,
   // force a session that is new but not yet modified to be saved back to the session store -> most cases this will be true
   saveUninitialized: true,
+  // creates session table in database and allows to keep track of users logged in/ passes in sequalized infomation in Express
   store: new SequelizeStore({
     db: sequelize,
   }),
 };
 
+// informs Express.js the use of const sess
 app.use(session(sess));
 
 // Inform Express.js on which template engine to use
@@ -42,4 +45,3 @@ app.use(routes);
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log("Now listening"));
 });
-// testing
