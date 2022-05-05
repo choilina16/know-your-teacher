@@ -6,34 +6,28 @@
 
 <body>
   
-  <img src="images/mokykla.jpg" class="box0">  
-  
-  <header>
-    
-    <img src="images/ChalkBoardLogo.png" class="box1">
-
-    <div id="loginsign">
-
-    <div id="start">
-    <button id="login">Login</button>
-    </div>
-
-    <div id="setup">
-    <button id="signup">Sign Up</button>
-    </div>
-
+    <header>
       <nav>
-        <a href='/'>Home</a>
-        {{#if logged_In}}
-          <a href='/create'>Create your favorites</a>
-          <button id='logout' class='btn-no-style'>Logout</button>
-        {{else}}
-          <a href='/login'>Login</a>
-          <a href='/signup'>Signup</a>
-        {{/if}}
+       <img src="images/ChalkBoardMini.png" class="box0">
       </nav>
-
     </header>
+    <div id ="loginsign">
+      <div id="start">
+      <button id="login">Login</button>
+      </div>
+      <div id="setup">
+      <button id="signup">Sign Up</button>
+      </div>
+        <nav>
+          <button href='/'>Home</button>
+          {{#if logged_In}}
+            <a href='/profile'>My Profile</a>
+            <button id='logout' class='btn-no-style'>Logout</button>
+          {{else}}
+            <button href='/login'>Login</button>
+          {{/if}}
+        </nav>
+      </header>
 
       <main class='container container-fluid mt-5'>
         <p>Get to know your teacher!</p>
