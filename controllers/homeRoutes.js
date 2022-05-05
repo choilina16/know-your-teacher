@@ -53,14 +53,8 @@ router.get("/:id", async (req, res) => {
       return;
     }
 
+    res.render("teacher", { teacherData, loggedIn: req.session.loggedIn });
     // res.status(200).json(teacherData);
-    // const teacher = teacherData.get({ plain: true });
-
-    // res.render('teacher', {
-    //   ...teacher,
-    //   logged_in: req.session.logged_in,
-    // });
-    res.status(200).json(teacherData);
   } catch (err) {
     res.status(500).json(err);
   }
