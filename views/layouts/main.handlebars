@@ -7,12 +7,22 @@
 <body>
   
     <header>
-      <a class="container=1">
+      <h1 class="container=1">
        <img src="images/ChalkBoardMini.png" class="box0">
        <div class="box1"></div>
-    
+       <div class="box2">
+      <a class="btn btn-primary" href='/' role="button">Home</a>
+      {{#if logged_In}}
+        <a href='/create'>Create your favorites</a>
+        <a href='/logout' id='logout' class='btn-no-style'>Logout</a>
+      {{else}}
+        <a class="btn btn-primary" href='/login'>Login</a>
+        <a class="btn btn-primary" href='/signup'>Signup</a>
+      {{/if}}
+    </div>
+      </h1>
     </header>
-
+    
     {{!-- <div id ="loginsign">
       <div id="start">
       <button id="login">Login</button>
@@ -22,19 +32,10 @@
       <button id="signup">Sign Up</button>
     </div> --}}
 
-    <nav>
-      <a class="btn btn-primary" href='/' role="button">Home</a>
-      {{#if logged_In}}
-        <a href='/create'>Create your favorites</a>
-        <a href='/logout' id='logout' class='btn-no-style'>Logout</a>
-      {{else}}
-        <a href='/login'>Login</a>
-        <a href='/signup'>Signup</a>
-      {{/if}}
-    </nav>
+   
     
-      <main class='container container-fluid mt-5'>
-        <p>Get to know your teacher!</p>
+      <main>
+        
         {{{body}}}
       </main>
 

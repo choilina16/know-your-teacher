@@ -12,42 +12,44 @@ body {
   font-family: Georgia, "Times New Roman", Times, serif;
   color: white;
   background-image: url("../images/mokykla.jpg");
-
   line-height: 1.5;
 }
-
-header {
+body header {
   margin: 10.938rem 0rem 0rem 0rem;
   width: 100%;
   height: 6.25rem;
 }
-header a {
+header h1 {
   display: flex;
 }
+
 .box0 {
   height: 6.25rem;
   display: flex;
   flex: 1;
-  order: 2;
+  order: 3;
 }
 .box1 {
   height: 6.25rem;
   background-color: var(--khaki);
   display: flex;
-  flex: 4.5;
-  order: 1;
-  opacity: 90%;
+  flex: 3;
+  order: 2;
 }
 .box2 {
-  height: 3.125rem;
-  width: 9.375rem;
-  font-size: large;
-  background: var(--chalkboard);
-  color: var(--palegrey);
-  cursor: pointer;
-  border-radius: 1.75rem 1.75rem 1.75rem 1.75rem;
+  height: 6.25rem;
+  background-color: var(--khaki);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: space-evenly;
+  align-items: center;
+  flex: 1;
+  order: 1;
 }
 
+/* button styling */
 button {
   height: 3.125rem;
   width: 9.375rem;
@@ -67,6 +69,7 @@ button:focus {
   border-color: var(--hoverChalkBoard);
 }
 
+/* home.handler button style */
 h1 a {
   height: 4.125rem;
   width: 9.375rem;
@@ -78,4 +81,72 @@ h1 a {
 }
 h2 button {
   display: block;
+}
+/* Home, Login, Signup button design */
+a.btn.btn-primary {
+  height: 3.125rem;
+  width: 9.375rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  font-size: large;
+  background: var(--chalkboard);
+  color: var(--palegrey);
+  cursor: pointer;
+  border-color: var(--chalkboard);
+  border-radius: 1.75rem 1.75rem 1.75rem 1.75rem;
+}
+/* Login design */
+form#login-form.login-form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+}
+div.card {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+  background-color: #bf844f;
+  width: 25rem;
+  margin: 8rem 0rem 0rem 0rem;
+}
+div.form-group {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+form#signup-form.login-form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+}
+main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+h2 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--khaki);
+  height: 5rem;
+  border-radius: 0.625rem;
+  font-weight: 200;
+}
+
+main div {
+  display: flex;
 }
