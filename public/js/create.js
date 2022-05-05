@@ -16,8 +16,8 @@ const newFormHandler = async (event) => {
   ).value;
   const otherEl = document.querySelector('input[name="teacher-other"]').value;
 
-  await fetch("/api/teacher/", {
-    method: "POST",
+  await fetch('/api/teacher/', {
+    method: 'POST',
     body: JSON.stringify({
       firstNameEl,
       lastNameEl,
@@ -29,15 +29,15 @@ const newFormHandler = async (event) => {
       otherEl,
     }),
 
-    headers: { "Content-Type": "application/json" },
+    headers: { 'Content-Type': 'application/json' },
   });
 
-  document.location.replace("/");
+  document.location.replace('/');
 };
 
 document
-  .querySelector("#new-post-form")
-  .addEventListener("submit", newFormHandler);
+  .querySelector('#new-post-form')
+  .addEventListener('submit', newFormHandler);
 
 // const newFormHandler = async (event) => {
 //   event.preventDefault();

@@ -1,28 +1,17 @@
 <head>
   <meta charset="UTF-8">
   <title>Know Your Teacher</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../../public/css/style.css">
 </head>
 
 <body>
   
     <header>
-      <h1 class="container=1">
+      <nav>
        <img src="images/ChalkBoardMini.png" class="box0">
-       <div class="box1"></div>
-       <div class="box2">
-      <a class="btn btn-primary" href='/' role="button">Home</a>
-      {{#if logged_In}}
-        <a href='/create'>Create your favorites</a>
-        <a href='/logout' id='logout' class='btn-no-style'>Logout</a>
-      {{else}}
-        <a class="btn btn-primary" href='/login'>Login</a>
-        <a class="btn btn-primary" href='/signup'>Signup</a>
-      {{/if}}
-    </div>
-      </h1>
+      </nav>
     </header>
-    
+
     {{!-- <div id ="loginsign">
       <div id="start">
       <button id="login">Login</button>
@@ -32,10 +21,19 @@
       <button id="signup">Sign Up</button>
     </div> --}}
 
-   
+    <nav>
+      <a href='/'>Home</a>
+      {{#if logged_In}}
+        <a href='/create'>Create your favorites</a>
+        <a href='/logout' id='logout' class='btn-no-style'>Logout</button>
+      {{else}}
+        <a href='/login'>Login</a>
+        <a href='/signup'>Signup</a>
+      {{/if}}
+    </nav>
     
-      <main>
-        
+      <main class='container container-fluid mt-5'>
+        <p>Get to know your teacher!</p>
         {{{body}}}
       </main>
 
@@ -46,6 +44,5 @@
     {{/if}}
    
   </body>
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
 </html>
