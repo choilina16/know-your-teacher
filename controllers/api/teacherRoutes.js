@@ -7,10 +7,10 @@ const { Teacher, User } = require('../../models');
 router.post('/', async (req, res) => {
   try {
     // these are the areas that need to filled out to create a new teacher
-    const newTeacher = await Teacher.create(
-      req.body
-      // userId: req.session.userId,
-    );
+    const newTeacher = await Teacher.create({
+      ...req.body,
+      user_Id: req.session.user_Id,
+    });
     // first_name: req.body.first_name,
     // last_name: req.body.last_name,
     // color: req.body.color,
